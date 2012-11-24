@@ -17,7 +17,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
      	(select
 	  osm_way,
@@ -62,7 +62,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
 	(select
 	  osm_way,
@@ -91,7 +91,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
   	(select
 	  osm_way,
@@ -123,7 +123,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
 	(select
 	  osm_way,
@@ -154,7 +154,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
 	(select
 	  osm_way_line as "osm_way",
@@ -185,7 +185,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
 	(select
 	  osm_way,
@@ -224,7 +224,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
      	(select
 	  (CASE WHEN "name_en" is null THEN "name_orig" END) "name_only",
@@ -266,7 +266,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
      	(select
 	  (CASE WHEN "name_en" is null THEN "name_orig" END) "name_only",
@@ -309,7 +309,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
 	(select
 	  osm_way as "osm_way",
@@ -341,7 +341,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
 	(select
 	  osm_way_line as "osm_way",
@@ -374,7 +374,7 @@
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
       <Parameter name="geometry_field">osm_way</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">(select name, "highway" as type, way, 
 	 (CASE WHEN round(angle/3.14159265358979323846*8)+4=8 THEN 0 ELSE round(angle/3.14159265358979323846*8)+4 END) as rotate, on_highway
 	 from osm_point order by z_order desc) as t</Parameter>

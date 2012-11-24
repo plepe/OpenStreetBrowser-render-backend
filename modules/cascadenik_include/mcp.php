@@ -6,6 +6,7 @@
 function cascadenik_include_fit($template, $path, $num=0, $where=0) {
   global $root_path;
   global $db;
+  global $DB_SRID;
 
   // TODO: pass as parameter
   include(modulekit_file("basemap", "config_queries.php"));
@@ -28,6 +29,7 @@ function cascadenik_include_fit($template, $path, $num=0, $where=0) {
   $rep["%DB_USER%"]=$db['user'];
   $rep["%DB_NAME%"]=$db['name'];
   $rep["%DB_PASS%"]=$db['passwd'];
+  $rep["%DB_SRID%"]=$DB_SRID;
 
   return strtr($template, $rep);
 }

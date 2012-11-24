@@ -11,7 +11,7 @@
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geom</Parameter>
       <Parameter name="table">
 (select
@@ -54,7 +54,7 @@ order by
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geom</Parameter>
       <Parameter name="table">
 (select
@@ -97,7 +97,7 @@ order by
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geom</Parameter>
       <Parameter name="table">
 (select
@@ -140,7 +140,7 @@ order by
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geom</Parameter>
       <Parameter name="table">
 (select
@@ -184,13 +184,13 @@ order by
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">bbox</Parameter>
       <Parameter name="table">
 (select
   "name", "importance",
-  GeometryFromText('POINT(' || x(centroid(poly)) || ' ' || ymax(poly) || ')', 900913) as top,
-  geomfromtext('LINESTRING(' || XMIN(poly)||' '||YMIN(poly) ||', '|| XMIN(poly)||' '||YMAX(poly) ||', '|| XMAX(poly)||' '||YMAX(poly)||', '|| XMAX(poly)||' '||YMIN(poly)||', '|| XMIN(poly)||' '||YMIN(poly) ||', '|| XMIN(poly)||' '||YMAX(poly)|| ')', 900913) as bbox
+  GeometryFromText('POINT(' || x(centroid(poly)) || ' ' || ymax(poly) || ')', %DB_SRID%) as top,
+  geomfromtext('LINESTRING(' || XMIN(poly)||' '||YMIN(poly) ||', '|| XMIN(poly)||' '||YMAX(poly) ||', '|| XMAX(poly)||' '||YMAX(poly)||', '|| XMAX(poly)||' '||YMIN(poly)||', '|| XMIN(poly)||' '||YMIN(poly) ||', '|| XMIN(poly)||' '||YMAX(poly)|| ')', %DB_SRID%) as bbox
 from
  (select
    osm_tags->'name' as "name",
@@ -226,7 +226,7 @@ from
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geo</Parameter>
       <Parameter name="table">
 (select
@@ -257,7 +257,7 @@ where
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geo</Parameter>
       <Parameter name="table">
 (select
@@ -288,7 +288,7 @@ where
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geo</Parameter>
       <Parameter name="table">
 (select
@@ -323,7 +323,7 @@ where
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geo</Parameter>
       <Parameter name="table">
 (select
@@ -359,12 +359,12 @@ where
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">top</Parameter>
       <Parameter name="table">
 (select
   "name", "importance",
-  GeometryFromText('POINT(' || x(centroid(poly)) || ' ' || ymax(poly) || ')', 900913) as top,
+  GeometryFromText('POINT(' || x(centroid(poly)) || ' ' || ymax(poly) || ')', %DB_SRID%) as top,
   poly as bbox
 from
  (select
@@ -395,12 +395,12 @@ from
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">top</Parameter>
       <Parameter name="table">
 (select
   "name", "importance",
-  GeometryFromText('POINT(' || x(centroid(poly)) || ' ' || ymax(poly) || ')', 900913) as top,
+  GeometryFromText('POINT(' || x(centroid(poly)) || ' ' || ymax(poly) || ')', %DB_SRID%) as top,
   poly as bbox
 from
  (select
@@ -436,7 +436,7 @@ from
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geo</Parameter>
       <Parameter name="table">
 (select
@@ -478,7 +478,7 @@ group by
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geom</Parameter>
       <Parameter name="table">
       (select 
@@ -504,7 +504,7 @@ group by
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geom</Parameter>
       <Parameter name="table">
 (select
@@ -548,7 +548,7 @@ order by
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="srid">900913</Parameter>
+      <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="geometry_field">geom</Parameter>
       <Parameter name="table">
 (select
