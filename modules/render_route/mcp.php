@@ -1,6 +1,6 @@
 <?
 function render_route_init($renderd) {
-  $prefix=modulekit_file("render_route", "overlay_pt");
+  $prefix=modulekit_file("render_route", "overlay_pt", true);
 
   if(filemtime("$prefix.mml")>filemtime("$prefix.mapnik")) {
     print "Recompiling render_route/overlay_pt\n";

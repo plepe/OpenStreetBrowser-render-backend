@@ -2,8 +2,8 @@
 function basemap_init($renderd) {
   $compile=false;
 
-  $prefix=modulekit_file("basemap", "base");
-  $path=modulekit_file("basemap", "");
+  $prefix=modulekit_file("basemap", "base", true);
+  $path=modulekit_file("basemap", "", true);
 
   if(!file_exists("$prefix.mapnik"))
     $compile=true;
