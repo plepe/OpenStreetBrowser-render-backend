@@ -11,7 +11,7 @@ function cascadenik_svg_process($infile, $outfile, $path) {
       if($m[4]=="svg") {
 	print "Converting $m[2]/$m[3].svg to $m[3].png\n";
 	copy("$path/$m[2]/$m[3].svg", "$tmp_dir/$m[3].svg");
-	system("rsvg $tmp_dir/$m[3].svg $tmp_dir/$m[3].png");
+	system("rsvg-convert $tmp_dir/$m[3].svg -o $tmp_dir/$m[3].png");
 	$r="$m[1]url('$tmp_dir/$m[3].png')$m[5]";
       }
       else {
