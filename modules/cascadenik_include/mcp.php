@@ -6,7 +6,9 @@
 function cascadenik_include_fit($template, $path, $num=0, $where=0) {
   global $root_path;
   global $db;
-  include("$root_path/render/config_queries.php");
+
+  // TODO: pass as parameter
+  include(modulekit_file("basemap", "config_queries.php"));
 
   $rep=array(
     "%LAYER_NUM%"=>$num,
