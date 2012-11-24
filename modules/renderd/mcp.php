@@ -27,19 +27,19 @@ function renderd_print_entry($id, $entry) {
 }
 
 function renderd_gen_conf() {
-  global $root_path;
+  global $data_path;
   global $lists_dir;
 
-  $conf=fopen("$root_path/data/renderd.conf", "w");
+  $conf=fopen("$data_path/renderd.conf", "w");
 
-  if(file_exists("$root_path/data/renderd.conf.template"))
-    $template=file_get_contents("$root_path/data/renderd.conf.template");
+  if(file_exists("$data_path/renderd.conf.template"))
+    $template=file_get_contents("$data_path/renderd.conf.template");
   else
-    $template=file_get_contents("$root_path/src/renderd.conf.template");
+    $template=file_get_contents(modulekit_file("renderd", "renderd.conf.template"));
   fwrite($conf, $template);
 
-  if(file_exists("$root_path/data/renderd.conf.local")) {
-    $template=file_get_contents("$root_path/data/renderd.conf.local");
+  if(file_exists("$data_path/renderd.conf.local")) {
+    $template=file_get_contents("$data_path/renderd.conf.local");
     fwrite($conf, $template);
   }
 
@@ -67,7 +67,7 @@ function renderd_gen_conf() {
   global $data_path;
   fwrite($conf, "[dummy]\n");
   fwrite($conf, "URI=/tiles/dummy/\n");
-  fwrite($conf, "XML=/home/osm/data/render_dummy.xml\n");
+  fwrite($conf, "XML=".modulekit_file("renderd", "render_dummy.xml")."\n");
   fwrite($conf, "HOST=dummy.host\n");
 
   fclose($conf);
@@ -201,7 +201,6 @@ function renderd_stop() {
 
 function renderd_restart() {
   global $apache2_reload_cmd;
-  global $root_path;
   global $renderd_start_time;
   global $renderd_cmd;
   global $renderd_proc;
@@ -211,7 +210,6 @@ function renderd_restart() {
   renderd_gen_conf();
   renderd_stop();
 
-  chdir($root_path);
   if(!$apache2_reload_cmd)
     $apache2_reload_cmd="sudo /etc/init.d/apache2 reload";
   system($apache2_reload_cmd);
