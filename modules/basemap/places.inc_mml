@@ -6,14 +6,14 @@
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="geometry_field">osm_way</Parameter>
+      <Parameter name="geometry_field">way</Parameter>
       <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
       (select /* place high */
-        osm_way,
+        way,
         %SQL_place%
-      from osm_point_extract
-      where osm_tags?'place'
+      from
+        osm_point_extract(!bbox!, $$tags?'place'$$)
       order by %SQL_places_sort%) as places
       </Parameter>
       <Parameter name="estimate_extent">false</Parameter>
@@ -27,14 +27,14 @@
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="geometry_field">osm_way</Parameter>
+      <Parameter name="geometry_field">way</Parameter>
       <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
       (select /* places_db */
-        osm_way,
+        way,
         %SQL_place%
-      from osm_point
-      where osm_tags?'place'
+      from
+        osm_point(!bbox!, $$tags?'place'$$)
       order by %SQL_places_sort%) as places
       </Parameter>
       <Parameter name="estimate_extent">false</Parameter>
@@ -48,16 +48,16 @@
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="geometry_field">osm_way</Parameter>
+      <Parameter name="geometry_field">way</Parameter>
       <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
       (select /* place high */ /*layer* clear_label_cache="on" */
-        osm_way,
-        basemap_places_get_name(osm_id, osm_tags, osm_way) as "name",
-        basemap_places_get_name_en(osm_id, osm_tags, osm_way) as "name_en",
+        way,
+        basemap_places_get_name(id, tags, way) as "name",
+        basemap_places_get_name_en(id, tags, way) as "name_en",
         %SQL_place%
-      from osm_point_extract
-      where osm_tags?'place'
+      from
+        osm_point_extract(!bbox!, $$tags?'place'$$)
       order by %SQL_places_sort%) as places
       </Parameter>
       <Parameter name="estimate_extent">false</Parameter>
@@ -71,16 +71,16 @@
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="geometry_field">osm_way</Parameter>
+      <Parameter name="geometry_field">way</Parameter>
       <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
       (select /* places_db */
-        osm_way,
-        basemap_places_get_name(osm_id, osm_tags, osm_way) as "name",
-        basemap_places_get_name_en(osm_id, osm_tags, osm_way) as "name_en",
+        way,
+        basemap_places_get_name(id, tags, way) as "name",
+        basemap_places_get_name_en(id, tags, way) as "name_en",
         %SQL_place%
-      from osm_point
-      where osm_tags?'place'
+      from
+        osm_point(!bbox!, $$tags?'place'$$)
       order by %SQL_places_sort%) as places
       </Parameter>
       <Parameter name="estimate_extent">false</Parameter>

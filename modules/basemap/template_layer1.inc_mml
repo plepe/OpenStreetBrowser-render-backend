@@ -4,11 +4,11 @@
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="geometry_field">osm_way</Parameter>
+      <Parameter name="geometry_field">way</Parameter>
       <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
 	(select
-	  osm_way_line as "osm_way",
+	  way,
 	  parse_layer(osm_tags) as "layer",
 	  osm_tags->'#highway_type' as "highway_type",
 	  osm_tags->'#highway_subtype' as "highway_sub_type",
@@ -17,12 +17,11 @@
 	  osm_tags->'#railway' as "railway",
 	  osm_tags->'#railway_tracks' as "tracks"
 	from (select
-	    osm_way_line,
+	    way,
 	    classify_hmatch(Array['basemap_highway', 'basemap_bridge', 'basemap_tunnel', 'basemap_railway', 'basemap_railway_tracks'],
-	                    osm_id, osm_tags, osm_way, osm_type) as "osm_tags"
-	    from osm_linepoly
-	    where osm_way &amp;&amp; !bbox!
-	    and %LAYER_WHERE%
+	                    id, tags, way, null) as "osm_tags"
+	    from
+	      osm_linepoly(!bbox!, $$%LAYER_WHERE%$$)
 	    offset 0) as t1
 	    order by cast(osm_tags->'#highway_level' as int) asc
 	) as t2
@@ -36,23 +35,24 @@
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="geometry_field">osm_way</Parameter>
+      <Parameter name="geometry_field">way</Parameter>
       <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
 	(select
-	  osm_way,
+	  way,
 	  parse_layer(osm_tags) as "layer",
 	  osm_tags->'#bridge' as "bridge",
 	  osm_tags->'#tunnel' as "tunnel",
 	  osm_tags->'#highway_polytype' as "highway_poly_type"
 	from (select
-	    osm_way,
+	    way,
 	    classify_hmatch(Array['basemap_highway_poly', 'basemap_bridge', 'basemap_tunnel', 'basemap_railway', 'basemap_railway_tracks'],
-	                    osm_id, osm_tags, osm_way, osm_type) as "osm_tags"
-	    from osm_all_polygon
-	    where osm_way &amp;&amp; !bbox!
-	    and %LAYER_WHERE%
-	    and (osm_tags@>'highway=>pedestrian' or osm_tags@>'amenity=>parking')
+	                    id, tags, way, null) as "osm_tags"
+	    from
+	      osm_polygon(!bbox!, $$
+		%LAYER_WHERE%
+		and (tags@>'highway=>pedestrian' or tags@>'amenity=>parking')
+	      $$)
 	    offset 0) as t1
 	    order by cast(osm_tags->'#highway_level' as int) asc
 	) as t2
@@ -66,22 +66,23 @@
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="geometry_field">osm_way</Parameter>
+      <Parameter name="geometry_field">way</Parameter>
       <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
      	(select
-	  osm_way,
+	  way,
 	  parse_layer(osm_tags) as "layer",
 	  osm_tags->'#building' as "building"
 	from (select
-	    osm_way,
-	    classify_hmatch(Array['basemap_building'], osm_id, osm_tags, osm_way, osm_type) as "osm_tags"
-	    from osm_all_polygon
-	    where osm_way &amp;&amp; !bbox!
-	    and %LAYER_WHERE%
-	    and (osm_tags?'building')
+	    way,
+	    classify_hmatch(Array['basemap_building'], id, tags, way, null) as "osm_tags"
+	    from
+	      osm_polygon(!bbox!, $$
+		%LAYER_WHERE%
+		and (tags?'building')
+	      $$)
 	    offset 0) as t1
-	    order by ST_Area(osm_way) desc
+	    order by ST_Area(way) desc
 	) as t2
       </Parameter>
       <Parameter name="estimate_extent">false</Parameter>

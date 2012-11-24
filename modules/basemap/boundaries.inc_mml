@@ -29,10 +29,10 @@
       <Parameter name="host">%DB_HOST%</Parameter>
       <Parameter name="user">%DB_USER%</Parameter>
       <Parameter name="password">%DB_PASS%</Parameter>
-      <Parameter name="geometry_field">osm_way</Parameter>
+      <Parameter name="geometry_field">way</Parameter>
       <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
-      (select * from osm_boundary) as admin</Parameter>
+      (select * from osm_boundary(!bbox!)) as admin</Parameter>
       <Parameter name="estimate_extent">false</Parameter>
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>

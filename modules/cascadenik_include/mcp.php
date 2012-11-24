@@ -22,7 +22,7 @@ function cascadenik_include_fit($template, $path, $num=0, $where=0) {
     $rep["%SQL_$k%"]=$sql;
   }
 
-  $rep["%LAYER_WHERE%"]="parse_layer(osm_tags)=$num";
+  $rep["%LAYER_WHERE%"]="parse_layer(tags)=$num";
   $rep["%LAYER%"]="$num";
   $rep["%ROOT_PATH%"]=$root_path;
   $rep["%DB_HOST%"]=$db['host'];
