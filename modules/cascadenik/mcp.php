@@ -40,7 +40,7 @@ function cascadenik_set_fontsets($file) {
   global $cascadenik_fontsets;
   $font_replace=array();
 
-  print "Cascadenik:: Replacing font_faces by fontsets\n";
+  print "Cascadenik:: Replacing font-faces by fontsets\n";
 
   $content=new DOMDocument();
   $content->loadXML(file_get_contents($file));
@@ -61,7 +61,7 @@ function cascadenik_set_fontsets($file) {
     // insert list of possible face names to each fontset
     foreach($fonts as $font) {
       $f=dom_create_append($fontset, "Font", $content);
-      $f->setAttribute("face_name", $font);
+      $f->setAttribute("face-name", $font);
 
       $font_replace[$font]=$name;
     }
@@ -72,21 +72,21 @@ function cascadenik_set_fontsets($file) {
   for($i=0; $i<$syms->length; $i++) {
     $sym=$syms->item($i);
 
-    // if a face_name is found replace by fontset_name
+    // if a face-name is found replace by fontset_name
     if(($face_name=$sym->getAttribute("face_name"))&&($font_replace[$face_name])) {
       $sym->removeAttribute("face_name");
-      $sym->setAttribute("fontset_name", $font_replace[$face_name]);
+      $sym->setAttribute("fontset-name", $font_replace[$face_name]);
     }
 
     // if a face-name is found replace by fontset_name (mapnik >0.7.2)
     if(($face_name=$sym->getAttribute("face-name"))&&($font_replace[$face_name])) {
       $sym->removeAttribute("face-name");
-      $sym->setAttribute("fontset_name", $font_replace[$face_name]);
+      $sym->setAttribute("fontset-name", $font_replace[$face_name]);
     }
 
     // as cascadenik ignores text-max-char-angle-delta, we just put it to
     // any TextSymbolizer. Is there a reason why we wouldn't want that?
-    $sym->setAttribute("max_char_angle_delta", 10);
+    $sym->setAttribute("max-char-angle-delta", 10);
   }
 
   file_put_contents($file, $content->saveXML());

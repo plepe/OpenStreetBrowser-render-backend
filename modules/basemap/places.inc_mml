@@ -41,7 +41,7 @@
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>
    </Layer>
-   <Layer class="places_high" clear_label_cache="on" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+   <Layer class="places_high" clear-label-cache="on" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -51,7 +51,7 @@
       <Parameter name="geometry_field">way</Parameter>
       <Parameter name="srid">%DB_SRID%</Parameter>
       <Parameter name="table">
-      (select /* place high */ /*layer* clear_label_cache="on" */
+      (select /* place high */ /*layer* clear-label-cache="on" */
         way,
         basemap_places_get_name(id, tags, way) as "name",
         basemap_places_get_name_en(id, tags, way) as "name_en",
