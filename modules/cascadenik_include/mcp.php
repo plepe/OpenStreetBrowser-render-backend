@@ -30,6 +30,7 @@ function cascadenik_include_fit($template, $path, $num=0, $where=0) {
   $rep["%DB_NAME%"]=$db['name'];
   $rep["%DB_PASS%"]=$db['passwd'];
   $rep["%DB_SRID%"]=$DB_SRID;
+  $rep["%LAYER_SRS%"]="+proj=latlong +datum=WGS84 +over";
 
   return strtr($template, $rep);
 }

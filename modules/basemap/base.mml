@@ -53,7 +53,7 @@
       <Parameter name="file">%ROOT_PATH%/data/world_boundaries/builtup_area</Parameter>
     </Datasource>
   </Layer>
-  <Layer class="landuse_extract" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="landuse_extract" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -82,7 +82,7 @@
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>
   </Layer>
-  <Layer class="landuse" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="landuse" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -111,10 +111,10 @@
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>
   </Layer>
-  <Layer class="buildings" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="buildings" status="on" srs="%LAYER_SRS%">
     <Datasource base="buildings"/>
   </Layer>
-  <Layer class="roads_extcas" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="roads_extcas" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -145,7 +145,7 @@
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>
   </Layer>
-  <Layer class="roads_casing_end" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="roads_casing_end" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -176,7 +176,7 @@
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>
   </Layer>
-  <Layer class="roads_extract" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="roads_extract" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -215,7 +215,7 @@
 %INSERT places%
 
 <!-- all layers: text -->
-  <Layer class="area_text_extract" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="area_text_extract" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -257,7 +257,7 @@
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>
   </Layer>
-  <Layer class="area_text" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="area_text" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -300,7 +300,7 @@
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>
   </Layer>
-  <Layer class="roads_exttext" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="roads_exttext" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -332,7 +332,7 @@
       <Parameter name="extent">-20037508,-19929239,20037508,19929239</Parameter>
     </Datasource>
   </Layer>
-  <Layer class="roads_text" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="roads_text" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
@@ -365,7 +365,7 @@
     </Datasource>
   </Layer>
 <!--
-  <Layer class="rot_feature" status="on" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
+  <Layer class="rot_feature" status="on" srs="%LAYER_SRS%">
     <Datasource>
       <Parameter name="type">postgis</Parameter>
       <Parameter name="dbname">%DB_NAME%</Parameter>
