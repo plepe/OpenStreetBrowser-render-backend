@@ -31,7 +31,10 @@ BEGIN
 	WHEN "key_exists" is null THEN true
 	ELSE osm_tags ? "key_exists"
       END) and
-      osm_type @> "type_match"
+      (CASE
+        WHEN osm_type is not null THEN osm_type @> "type_match"
+	ELSE true
+      END)
     order by
       "importance" desc
     limit 1;
