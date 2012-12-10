@@ -284,7 +284,7 @@ Map {
 .area_text[way_area<2000000][zoom=17] name_en,
 .area_text[way_area<500000][zoom=18] name_en {
   text-size: 8;
-  text-dy: 9;
+  text-dy: 12;
 }
 .area_text_extract[type=water] name_only,
 .area_text[type=water] name_only,

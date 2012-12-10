@@ -34,7 +34,6 @@ alias place=town_large place=town|population>=30000
   text-fill: #000000;
   text-avoid-edges: true;
   text-halo-radius: 2;
-  text-vertical-align: middle;
 }
 .places_high[place=continent][zoom>=2][zoom<4] name_en,
 .places_high[place=city_large][zoom>=10][zoom<11] name_en,
@@ -54,7 +53,7 @@ alias place=town_large place=town|population>=30000
   text-fill: #000000;
   text-avoid-edges: true;
   text-halo-radius: 2;
-  text-dy: 9;
+  text-dy: 13;
 }
 .places_high[place=continent][zoom=1] name,
 .places_db[place=suburb][zoom>=13][zoom<15] name,
@@ -79,7 +78,7 @@ alias place=town_large place=town|population>=30000
   text-fill: #000000;
   text-avoid-edges: true;
   text-halo-radius: 1;
-  text-dy: 8;
+  text-dy: 11;
 }
 .places_db[place=locality][zoom>=15] name
 {
@@ -98,7 +97,7 @@ alias place=town_large place=town|population>=30000
   text-fill: #222222;
   text-avoid-edges: true;
   text-halo-radius: 1;
-  text-dy: 5;
+  text-dy: 7;
 }
 .places_high[place=country_large][zoom>=6][zoom<9] name,
 .places_high[place=country_medium][zoom>=8][zoom<11] name,
@@ -158,7 +157,7 @@ alias place=town_large place=town|population>=30000
   text-fill: #222222;
   text-avoid-edges: true;
   text-halo-radius: 1;
-  text-dy: 8;
+  text-dy: 10;
 }
 .places_high[place=country_large][zoom>=2][zoom<4] name,
 .places_high[place=country_medium][zoom>=4][zoom<6] name,
@@ -181,7 +180,7 @@ alias place=town_large place=town|population>=30000
   text-fill: #333333;
   text-avoid-edges: true;
   text-halo-radius: 1;
-  text-dy: 6;
+  text-dy: 8;
 }
 .places_high_point[place=city_large][zoom>=4][zoom<6] ,
 .places_high_point[place=city_medium][zoom>=6][zoom<8] ,
@@ -203,7 +202,7 @@ alias place=town_large place=town|population>=30000
 .places_db[place=hamlet][zoom>=13][zoom<15] name,
 .places_db[place=isolated_dwelling][zoom>=15][zoom<17] name
 {
-  text-dy: 4;
+  text-dy: 8;
   text-size: 8;
   text-placement: point;
   text-face-name: "DejaVu Sans Book";
@@ -226,7 +225,7 @@ alias place=town_large place=town|population>=30000
   text-fill: #222222;
   text-avoid-edges: false;
   text-halo-radius: 1;
-  text-dy: 14;
+  text-dy: 16;
 }
 .places_high_point[place=city_large][zoom>=6][zoom<10] ,
 .places_high_point[place=city_medium][zoom>=8][zoom<10] ,
@@ -248,7 +247,7 @@ alias place=town_large place=town|population>=30000
 .places_db[place=town][zoom>=11][zoom<13] name,
 .places_db[place=village][zoom>=13][zoom<15] name
 {
-  text-dy: 5;
+  text-dy: 9;
   text-size: 10;
   text-placement: point;
   text-face-name: "DejaVu Sans Book";
@@ -271,7 +270,7 @@ alias place=town_large place=town|population>=30000
   text-fill: #000000;
   text-avoid-edges: false;
   text-halo-radius: 1;
-  text-dy: 17;
+  text-dy: 20;
 }
 
 .places_high[place=ocean][zoom>=2][zoom<6] name {
@@ -297,7 +296,6 @@ alias place=town_large place=town|population>=30000
   text-halo-radius: 1;
   text-fill: #156299;
   text-halo-fill: #7eb9e3;
-  text-dy: -1;
 }
 .places_high[place=sea][zoom>=4][zoom<10] name_en {
   text-face-name: "DejaVu Sans Oblique";
@@ -305,25 +303,27 @@ alias place=town_large place=town|population>=30000
   text-halo-radius: 1;
   text-fill: #156299;
   text-halo-fill: #7eb9e3;
-  text-dy: 1;
 }
 .places_high[place=sea][zoom>=4][zoom<5] name {
   text-size: 9;
 }
 .places_high[place=sea][zoom>=4][zoom<5] name_en {
   text-size: 7;
+  text-dy: 10;
 }
 .places_high[place=sea][zoom>=5][zoom<8] name {
   text-size: 11;
 }
 .places_high[place=sea][zoom>=5][zoom<8] name_en {
   text-size: 10;
+  text-dy: 12;
 }
 .places_high[place=sea][zoom>=8][zoom<10] name {
   text-size: 13;
 }
 .places_high[place=sea][zoom>=8][zoom<10] name_en {
   text-size: 11;
+  text-dy: 14;
 }
 
 
@@ -344,5 +344,5 @@ alias place=town_large place=town|population>=30000
   text-fill: #56533f;
   text-halo-fill: #f2efd9;
   text-halo-radius: 1;
-  text-dy: 9;
+  text-dy: 11;
 }
