@@ -1,9 +1,9 @@
 <?
-function render_route_init($renderd) {
-  $prefix=modulekit_file("render_route", "overlay_pt", true);
+function overlay_pt_init($renderd) {
+  $prefix=modulekit_file("overlay_pt", "overlay_pt", true);
 
   if(filemtime("$prefix.mml")>filemtime("$prefix.mapnik")) {
-    print "Recompiling render_route/overlay_pt\n";
+    print "Recompiling overlay_pt\n";
     cascadenik_compile("$prefix.mml");
     mapnik_colorsvg_process("$prefix.mapnik");
     mapnik_rotate_process("$prefix.mapnik");
@@ -12,4 +12,4 @@ function render_route_init($renderd) {
   $renderd['overlay_pt']=array("file"=>"$prefix.mapnik");
 }
 
-register_hook("renderd_get_maps", "render_route_init");
+register_hook("renderd_get_maps", "overlay_pt_init");
