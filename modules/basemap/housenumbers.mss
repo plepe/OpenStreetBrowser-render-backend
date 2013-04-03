@@ -7,6 +7,9 @@
   text-allow-overlap: true;
   text-halo-radius: 0;
   text-halo-fill: #f2efd9;
+  /* Debug: show lines on which housenumbers are placed
+  line-color: #0000ff;
+  line-width: 1; */
 }
 .housenumber_lines[zoom>=17] {
   line-color: #505050;
