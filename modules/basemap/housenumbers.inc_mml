@@ -28,7 +28,7 @@
       <Parameter name="table">(
 select
   tags->'addr:housenumber' as "number",
-  basemap_rotate_line(id, tags, way, (geo_relate_calc_angles(id, tags, way, 200, E'tags->''name''=$2->''addr:street'' and tags?''highway'''))[4], !scale_denominator!/200) as "geo"
+  basemap_rotate_line(id, tags, way, (geo_relate_calc_angles(id, tags, way, 0.002, E'tags->''name''=OB_TAGS->''addr:street'' and tags?''highway'''))[4], !scale_denominator!/200) as "geo"
 from
   (select
      id, tags, ST_Centroid(way) as "way"

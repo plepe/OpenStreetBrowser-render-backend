@@ -33,6 +33,7 @@ DECLARE
   id alias for $1;
   tags alias for $2;
   way alias for $3;
+  way_900913 geometry;
   angle float;
   length alias for $5;
   ret geometry;
@@ -42,11 +43,13 @@ BEGIN
     angle:=pi()/2;
   end if;
 
-  ret:=ST_GeomFromText('LINESTRING(0 -'||(length)||',0 '||(length)||')');
-  ret:=ST_Rotate(ret, -angle);
-  ret:=ST_Translate(ret, X(way), Y(way));
+  way_900913:=ST_Transform(way, 900913);
 
-  return ret;
+  ret:=ST_GeomFromText('LINESTRING(0 -'||(length)||',0 '||(length)||')', 900913);
+  ret:=ST_Rotate(ret, -angle);
+  ret:=ST_Translate(ret, X(way_900913), Y(way_900913));
+
+  return ST_Transform(ret, ST_SRID(way));
 END;
 $$ LANGUAGE plpgsql immutable;
 
