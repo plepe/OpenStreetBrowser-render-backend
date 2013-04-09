@@ -15,6 +15,8 @@ global $renderd_pipes;
 global $renderd_start_time;
 global $renderd_current;
 $renderd_current=array();
+global $renderd_respawn;
+$renderd_respawn=0;
 
 function renderd_print_entry($id, $entry) {
   $ret ="[{$id}]\n";
@@ -132,6 +134,11 @@ function renderd_read() {
     // if renderd is not working properly (quit after less than a minute) don't
     // restart but write debug message instead
     if($duration>60)
+      $renderd_respawn=0;
+    else
+      $renderd_respawn++;
+
+    if($renderd_respawn<5)
       renderd_restart();
     else {
       debug("not restarting renderd - respawning too fast", "renderd");
