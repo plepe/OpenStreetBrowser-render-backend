@@ -13,6 +13,7 @@ function renderd_mem_check_get_stat() {
 }
 
 function renderd_mem_check_tick() {
+  global $renderd_current;
   $stat=renderd_mem_check_get_stat();
 
   $free=$stat['MemFree']+$stat['Cached'];
@@ -20,6 +21,10 @@ function renderd_mem_check_tick() {
 
   if($free<2000000) {
     print "Restarting renderd\n";
+    renderd_restart();
+  }
+  else if(($free<4000000)&&(sizeof($renderd_current)==0)) {
+    print "Restarting renderd, currently idle\n";
     renderd_restart();
   }
 }
